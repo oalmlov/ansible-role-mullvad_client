@@ -1,0 +1,13 @@
+---
+- name: Check for existing keys
+  ansible.builtin.command: 'mullvad tunnel wireguard key check'
+  changed_when: false
+  register: wg_key
+
+- name: generate wireguard key
+  ansible.builtin.command: 'mullvad tunnel wireguard key regenerate'
+  when: "(wg_key.rc != 0 or 'Key is valid for use with current account: false' in wg_key.stdout) and mullvad_connection.generate_wg_keys"
+  failed_when: '"Account has too many keys" in wg_key.stdout'
+
+- name: enable wireguard relay protocol
+  ansible.builtin.command: 'mullvad relay set tunnel-protocol wireguard'

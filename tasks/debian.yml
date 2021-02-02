@@ -1,0 +1,11 @@
+---
+- name: install role dependencies
+  ansible.builtin.apt:
+    name: '{{ __role_dependencies }}'
+    state: present
+    update_cache: true
+
+- name: install package
+  ansible.builtin.apt:
+    deb: '{{ mullvad_client_binary_url }}'
+    state: present

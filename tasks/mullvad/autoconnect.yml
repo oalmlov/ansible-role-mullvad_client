@@ -1,0 +1,13 @@
+---
+# Commented because this command breaks ansible when
+# auto-connect is disabled. Ignore_errors does not work.
+
+# - name: check autoconnect setting
+#   ansible.builtin.command: 'mullvad auto-connect check'
+#   changed_when: false
+#   ignore_errors: yes
+#   register: autoconnect
+
+- name: autoconnect setup
+  ansible.builtin.command: 'mullvad auto-connect set on'
+  when: mullvad_connection.connect_on_startup

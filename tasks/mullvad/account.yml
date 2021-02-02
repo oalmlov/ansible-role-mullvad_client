@@ -1,0 +1,16 @@
+---
+- name: check configured account
+  ansible.builtin.command: 'mullvad account get'
+  changed_when: false
+  ignore_errors: true
+  register: account
+
+- name: set account id
+  ansible.builtin.command: 'mullvad account set {{ mullvad_connection.account_id }}'
+  when: mullvad_connection.account_id not in account.stdout
+
+- name: validate account id
+  ansible.builtin.command: 'mullvad account get'
+  register: account
+  failed_when: '"INVALID_ACCOUNT" in account.stdout'
+  changed_when: false

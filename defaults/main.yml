@@ -1,0 +1,28 @@
+---
+# defaults file for mullvad-client
+# @var mullvad_client_base_url:description: Base URL where binary files are downloaded from.
+mullvad_client_base_url: https://mullvad.net/download/app
+# @var mullvad_connection:description: >
+# A dictionary containing information to setup your connection.
+# Either set or ommit 'servername' to connect to a specific server or choose one at random by country and city.
+# @end
+# @var mullvad_connection:example: >
+# mullvad_connection:
+#   account_id: 123456789
+#   relay:
+#     type: wireguard
+#     country: se
+#     city: got
+#     servername: se9-wireguard
+#   generate_wg_keys: true
+#   connect_on_install: true
+#   connect_on_startup: true
+mullvad_connection:
+  account_id: ''
+  relay:
+    type: ''
+    country: ''
+    city: ''
+  generate_wg_keys: true
+  connect_on_install: true
+  connect_on_startup: true

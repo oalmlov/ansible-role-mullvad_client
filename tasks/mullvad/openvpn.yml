@@ -1,0 +1,3 @@
+---
+- name: enable openvpn relay protocol
+  ansible.builtin.command: 'mullvad relay set tunnel-protocol openvpn'

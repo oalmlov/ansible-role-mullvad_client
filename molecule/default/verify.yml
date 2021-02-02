@@ -1,0 +1,29 @@
+---
+# This is an example playbook to execute Ansible tests.
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: assert package is installed
+    ansible.builtin.package:
+      name: mullvad-vpn
+      state: present
+
+  - name: assert service is enabled
+    ansible.builtin.service:
+      name: mullvad-daemon.service
+      state: started
+
+  - name: assert vpn status
+    block:
+      - name: fetch exit ip
+        ansible.builtin.uri:
+          url: https://ipv4.am.i.mullvad.net/json
+          status_code: 200
+        register: result
+
+      - name: assert exit ip is mullvad
+        ansible.builtin.assert:
+          that: result.json.mullvad_exit_ip is true
+          success_msg: exit ip is mullvad({{ result.json.ip }})
+          fail_msg: exit ip is not mullvad({{ result.json.ip }})

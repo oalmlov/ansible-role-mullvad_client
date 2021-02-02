@@ -1,0 +1,4 @@
+---
+# vars file for mullvad-client
+__dependencies: []
+mullvad_client_binary_url: '{{mullvad_client_base_url }}/{{ package_format }}/latest'

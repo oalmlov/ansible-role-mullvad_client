@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include mullvad_client"
+      include_role:
+        name: "mullvad_client"

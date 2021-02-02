@@ -1,0 +1,4 @@
+---
+package_format: deb
+__distro_dependencies:
+  - iputils-ping
