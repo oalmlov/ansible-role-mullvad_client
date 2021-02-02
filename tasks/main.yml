@@ -1,5 +1,8 @@
 ---
 # tasks file for mullvad-client
+- name: preflight check
+  include_tasks: preflight.yml
+
 - name: include disto specific vars
   include_vars: '{{ lookup("first_found", file) }}'
   vars:

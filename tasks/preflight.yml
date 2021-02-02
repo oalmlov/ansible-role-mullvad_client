@@ -1,0 +1,22 @@
+---
+# only 64-bit linux is supported
+- name: check architecture
+  assert:
+    that: '"{{ ansible_architecture }}" == "x86_64"'
+    fail_msg: only 64 bit linux is supported
+    success_msg: architecture is 64-bit
+
+# not supported on ubuntu 14.04
+- name: check ubuntu version
+  assert:
+    that: '{{ ansible_distribution_version }} is version("14.04", "!=")'
+    fail_msg: ubuntu 14.04 not supported
+    success_msg: distribution version is not 14.04
+  when: ansible_distribution | lower == 'ubuntu'
+
+# only kernel versions >= 4.19
+- name: check kernel version
+  assert:
+    that: '{{ ansible_kernel is version("4.19", ">=") }}'
+    fail_msg: kernel versions < 4.19 not supoorted
+    success_msg: kernel version is >= 14.19
