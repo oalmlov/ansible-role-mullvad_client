@@ -4,7 +4,7 @@
 mullvad_client_base_url: https://mullvad.net/download/app
 # @var mullvad_connection:description: >
 # A dictionary containing information to setup your connection.
-# Either set or ommit 'servername' to connect to a specific server or choose one at random by country and city.
+# Either set or omit 'servername' to connect to a specific server or choose one at random by country and city.
 # @end
 # @var mullvad_connection:example: >
 # mullvad_connection:

@@ -27,7 +27,7 @@ mullvad_client_base_url: https://mullvad.net/download/app
 
 ### mullvad_connection
 
-A dictionary containing information to setup your connection. Either set or ommit 'servername' to connect to a specific server or choose one at random by country and city.
+A dictionary containing information to setup your connection. Either set or omit 'servername' to connect to a specific server or choose one at random by country and city.
 
 #### Default value
 
