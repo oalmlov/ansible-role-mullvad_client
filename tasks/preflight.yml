@@ -19,4 +19,4 @@
   assert:
     that: ansible_kernel is version("4.19", ">=")
     fail_msg: kernel versions < 4.19 not supoorted
-    success_msg: kernel version is >= 14.19
+    success_msg: kernel version is >= 4.19
