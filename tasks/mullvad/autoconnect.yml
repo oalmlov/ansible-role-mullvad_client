@@ -10,4 +10,3 @@
 
 - name: autoconnect setup
   ansible.builtin.command: 'mullvad auto-connect set on'
-  when: mullvad_connection.connect_on_startup

@@ -32,8 +32,8 @@
 
 - name: autoconnect setup
   include_tasks: mullvad/autoconnect.yml
-  when: mullvad_connection.connect_on_startup is defined and mullvad_connection.connect_on_startup
+  when: mullvad_connection.connect_on_startup | default(false)
 
 - name: connect
   include_tasks: mullvad/connect.yml
-  when: mullvad_connection.connect_on_install is defined and mullvad_connection.connect_on_install
+  when: mullvad_connection.connect_on_install | default(false)
